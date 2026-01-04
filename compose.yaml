@@ -1,0 +1,11 @@
+
+services:
+  oracle:
+    image: gvenzl/oracle-free:latest
+    container_name: oracle-db
+    environment:
+      ORACLE_PASSWORD: secret
+      APP_USER: ecommerce
+      APP_USER_PASSWORD: ecommerce
+    ports:
+      - "1521:1521"

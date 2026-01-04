@@ -1,0 +1,67 @@
+############################################
+# Authentication API
+# File: auth.rest
+# Description: User registration and login APIs
+############################################
+
+
+
+############################################
+# User Registration
+############################################
+# Endpoint: POST /auth/register
+# Description:
+#   Registers a new user using email, phone number, and password.
+#
+# Request Body Fields:
+#   - email     : User's unique email address
+#   - phone     : User's mobile number
+#   - password  : User's password (will be securely hashed on server)
+#
+# Success Response:
+#   - HTTP 201 Created
+#
+# Error Responses:
+#   - 400 Bad Request       → Invalid input
+#   - 409 Conflict          → Email or phone already exists
+#   - 500 Internal Server   → Server error
+
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "phone": "9079791678",
+  "password": "securepassword"
+}
+
+###
+
+
+############################################
+# User Login
+############################################
+# Endpoint: POST /auth/login
+# Description:
+#   Authenticates a user and returns an access token.
+#
+# Request Body Fields:
+#   - email     : Registered email address
+#   - password  : User's password
+#
+# Success Response:
+#   - HTTP 200 OK
+#   - Returns JWT access token
+#
+# Error Responses:
+#   - 401 Unauthorized      → Invalid credentials
+#   - 404 Not Found         → User does not exist
+#   - 500 Internal Server   → Server error
+
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "user1@example.com",
+  "password": "securepassword"
+}
