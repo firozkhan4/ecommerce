@@ -4,6 +4,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.firozkhan.ecommerce.model.entity.User;
@@ -32,4 +34,7 @@ public interface JpaUserRepository extends JpaRepository<User, UUID> {
     boolean existsByPhone(String phone);
 
     Optional<User> findById(UUID id);
+
+    @Query("SELECT u from User u WHERE u.email = :identifier OR u.phone = :identifier")
+    Optional<User> findByIdentifier(@Param("identifier") String identifier);
 }

@@ -1,23 +1,25 @@
 package com.firozkhan.ecommerce.web.dto.response;
 
+import java.util.UUID;
+
 public class AuthResponse {
 
-    private String id;
+    private UUID id;
     private String token;
 
     public AuthResponse() {
     }
 
-    public AuthResponse(String id, String token) {
+    public AuthResponse(UUID id, String token) {
         this.id = id;
         this.token = token;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

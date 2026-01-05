@@ -44,8 +44,13 @@ public class UserRepositoryImp implements UserRepository {
     }
 
     @Override
-    public void save(User user) {
-       jpaUserRepository.save(user);
+    public User save(User user) {
+       return jpaUserRepository.save(user);
+    }
+
+    @Override
+    public Optional<User> findByIdentifier(String identifier) {
+        return jpaUserRepository.findByIdentifier(identifier);
     }
 
     

@@ -3,6 +3,8 @@ package com.firozkhan.ecommerce.model.repository;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.repository.query.Param;
+
 import com.firozkhan.ecommerce.model.entity.User;
 
 
@@ -27,6 +29,9 @@ public interface UserRepository {
 
     Optional<User> findById(UUID id);
 
-    void save(User user);
+    User save(User user);
+
+
+    Optional<User> findByIdentifier(String identifier);
 
 }

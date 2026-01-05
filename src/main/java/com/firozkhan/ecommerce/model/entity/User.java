@@ -24,14 +24,11 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(
-    name = "users",
-    indexes = {
+@Table(name = "users", indexes = {
         @Index(name = "idx_user_email", columnList = "email"),
         @Index(name = "idx_user_phone", columnList = "phone"),
         @Index(name = "idx_user_role", columnList = "role")
-    }
-)
+})
 public class User {
 
     @Id
@@ -45,10 +42,7 @@ public class User {
     private String email;
 
     @NotBlank(message = "Phone number is required")
-    @Pattern(
-        regexp = "^[6-9]\\d{9}$",
-        message = "Invalid Indian mobile number"
-    )
+    @Pattern(regexp = "^[6-9]\\d{9}$", message = "Invalid Indian mobile number")
     @Column(name = "phone", nullable = true, unique = true, length = 15)
     private String phone;
 
@@ -74,6 +68,12 @@ public class User {
 
     protected User() {
         // JPA only
+    }
+
+    public User(String email, String passwordHash, UserRole role) {
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.role = role != null ? role : UserRole.CUSTOMER;
     }
 
     public User(String email, String phone, String passwordHash, UserRole role) {

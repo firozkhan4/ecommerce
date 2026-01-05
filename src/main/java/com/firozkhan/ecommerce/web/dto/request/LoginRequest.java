@@ -2,36 +2,31 @@ package com.firozkhan.ecommerce.web.dto.request;
 
 public class LoginRequest {
 
-    private String email;
-    private String phone;
+    private String identifier;
     private String password;
 
     public LoginRequest() {
     }
 
-    public LoginRequest(String email, String phone, String password) {
-        this.email = email;
-        this.phone = phone;
+    public LoginRequest(String identifier, String password) {
+        this.identifier = identifier;
         this.password = password;
     }
-    public String getEmail() {
-        return email;
+
+    public String getIdentifier() {
+        return identifier;
     }
-    public void setEmail(String email) {
-        this.email = email;
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    
 }

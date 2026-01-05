@@ -3,7 +3,8 @@ package com.firozkhan.ecommerce.application.service.auth.implement;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.firozkhan.ecommerce.application.exception.NotFoundException;
+import com.firozkhan.ecommerce.application.comman.StringUtils;
+import com.firozkhan.ecommerce.application.exception.BadCredentialsException;
 import com.firozkhan.ecommerce.application.service.auth.AuthService;
 import com.firozkhan.ecommerce.model.entity.User;
 import com.firozkhan.ecommerce.model.repository.UserRepository;
@@ -24,38 +25,43 @@ public class AuthServiceImp implements AuthService {
 
     @Override
     public AuthResponse login(LoginRequest request) {
-        var user = userRepository.findByEmailIgnoreCase(request.getEmail())
-                .orElseThrow(() -> new NotFoundException("User not found"));
+
+        if (request == null || StringUtils.isNullOrBlank(request.getIdentifier())
+                || StringUtils.isNullOrBlank(request.getPassword())) {
+            throw new IllegalArgumentException();
+        }
+
+        var user = userRepository.findByIdentifier(request.getIdentifier())
+                .orElseThrow(() -> new BadCredentialsException("Invalid Credentials"));
 
         var match = passwordEncoder.matches(request.getPassword(), user.getPasswordHash());
 
         if (!match) {
-            throw new RuntimeException("Invalid credentials");
+            throw new BadCredentialsException("Invalid Credentials");
         }
 
-        return new AuthResponse(user.getId().toString(), "");
+        return new AuthResponse(user.getId(), "");
     }
 
     @Override
     public AuthResponse register(RegisterRequest request) {
 
-        boolean exists;
-
-        if (request.getEmail() == null || request.getEmail().isBlank()) {
-            exists = userRepository.existsByPhone(request.getPhone());
-        } else {
-            exists = userRepository.existsByEmailIgnoreCase(request.getEmail());
+        if (request == null || StringUtils.isNullOrBlank(request.getEmail())
+                || StringUtils.isNullOrBlank(request.getPassword())
+                || StringUtils.isNullOrBlank(request.getPhone())) {
+            throw new IllegalArgumentException();
         }
 
-        if (exists) {
-            throw new RuntimeException("User already exists");
+        if (userRepository.existsByEmailIgnoreCase(request.getEmail())
+                || userRepository.existsByPhone(request.getPhone())) {
+            throw new IllegalStateException("User already exists");
         }
 
         var hashedPassword = passwordEncoder.encode(request.getPassword());
         var user = new User(request.getEmail(), request.getPhone(), hashedPassword, null);
-        userRepository.save(user);
+        var newUser = userRepository.save(user);
 
-        return new AuthResponse(user.getId().toString(),"");
+        return new AuthResponse(newUser.getId(), "");
     }
 
 }
