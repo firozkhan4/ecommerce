@@ -44,7 +44,7 @@ class AuthServiceTest {
     void setUp() {
         mockUser = new User(
                 "firoz@gmail.com",
-                "9079791678",
+                "9097976187",
                 "hashed_password",
                 null);
     }
@@ -56,7 +56,7 @@ class AuthServiceTest {
     @Test
     @DisplayName("Register - Success")
     void register_success() {
-        RegisterRequest request = new RegisterRequest("firoz@gmail.com", "9079791678", "password");
+        RegisterRequest request = new RegisterRequest("firoz@gmail.com", "9097976187", "password");
 
         when(passwordEncoder.encode("password")).thenReturn("hashed_password");
         when(userRepository.save(any(User.class))).thenReturn(mockUser);
@@ -71,7 +71,7 @@ class AuthServiceTest {
     @Test
     @DisplayName("Register - User already exists")
     void register_userAlreadyExists() {
-        RegisterRequest request = new RegisterRequest("firoz@gmail.com", "9079791678", "password");
+        RegisterRequest request = new RegisterRequest("firoz@gmail.com", "9097976187", "password");
 
         when(userRepository.existsByEmailIgnoreCase("firoz@gmail.com")).thenReturn(true);
 
@@ -94,7 +94,7 @@ class AuthServiceTest {
     @Test
     @DisplayName("Register - Empty email")
     void register_emptyEmail() {
-        RegisterRequest request = new RegisterRequest("", "9079791678", "password");
+        RegisterRequest request = new RegisterRequest("", "9097976187", "password");
 
         assertThatThrownBy(() -> authService.register(request))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -103,7 +103,7 @@ class AuthServiceTest {
     @Test
     @DisplayName("Register - Empty password")
     void register_emptyPassword() {
-        RegisterRequest request = new RegisterRequest("firoz@gmail.com", "9079791678", "");
+        RegisterRequest request = new RegisterRequest("firoz@gmail.com", "9097976187", "");
 
         assertThatThrownBy(() -> authService.register(request))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -112,7 +112,7 @@ class AuthServiceTest {
     @Test
     @DisplayName("Register - Password encoder failure")
     void register_passwordEncoderFailure() {
-        RegisterRequest request = new RegisterRequest("firoz@gmail.com", "9079791678", "password");
+        RegisterRequest request = new RegisterRequest("firoz@gmail.com", "9097976187", "password");
 
         when(passwordEncoder.encode("password"))
                 .thenThrow(new RuntimeException("Encoder failure"));
@@ -125,7 +125,7 @@ class AuthServiceTest {
     @Test
     @DisplayName("Register - Repository save failure")
     void register_repositoryFailure() {
-        RegisterRequest request = new RegisterRequest("firoz@gmail.com", "9079791678", "password");
+        RegisterRequest request = new RegisterRequest("firoz@gmail.com", "9097976187", "password");
 
         when(passwordEncoder.encode("password")).thenReturn("hashed_password");
         when(userRepository.save(any(User.class)))

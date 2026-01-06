@@ -53,5 +53,10 @@ public class UserRepositoryImp implements UserRepository {
         return jpaUserRepository.findByIdentifier(identifier);
     }
 
+    @Override
+    public boolean existsById(UUID id) {
+        return jpaUserRepository.existsById(id);
+    }
+
     
 }

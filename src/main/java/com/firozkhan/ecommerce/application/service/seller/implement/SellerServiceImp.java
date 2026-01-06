@@ -6,6 +6,8 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.firozkhan.ecommerce.application.service.seller.SellerService;
+import com.firozkhan.ecommerce.model.repository.SellerRepository;
+import com.firozkhan.ecommerce.model.repository.UserRepository;
 import com.firozkhan.ecommerce.web.dto.request.CreateSellerRequest;
 import com.firozkhan.ecommerce.web.dto.request.UpdateSellerRequest;
 import com.firozkhan.ecommerce.web.dto.response.SellerResponse;
@@ -13,10 +15,19 @@ import com.firozkhan.ecommerce.web.dto.response.SellerResponse;
 @Service
 public class SellerServiceImp implements SellerService {
 
+    private final SellerRepository sellerRepository;
+    private final UserRepository userRepository;
+
+
+    public SellerServiceImp(SellerRepository sellerRepository, UserRepository userRepository) {
+        this.sellerRepository = sellerRepository;
+        this.userRepository = userRepository;
+    }
+
     @Override
     public SellerResponse createSeller(CreateSellerRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createSeller'");
+        
+        var exists = userRepository.existsById(request.getUserId());
     }
 
     @Override

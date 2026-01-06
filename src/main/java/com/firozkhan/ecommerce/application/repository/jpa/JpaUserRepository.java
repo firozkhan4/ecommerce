@@ -32,6 +32,8 @@ public interface JpaUserRepository extends JpaRepository<User, UUID> {
      * Check if phone already exists
      */
     boolean existsByPhone(String phone);
+    
+    boolean existsById(UUID id);
 
     Optional<User> findById(UUID id);
 

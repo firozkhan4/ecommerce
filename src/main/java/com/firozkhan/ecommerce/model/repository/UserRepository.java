@@ -3,10 +3,7 @@ package com.firozkhan.ecommerce.model.repository;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.springframework.data.repository.query.Param;
-
 import com.firozkhan.ecommerce.model.entity.User;
-
 
 public interface UserRepository {
 
@@ -27,10 +24,11 @@ public interface UserRepository {
      */
     boolean existsByPhone(String phone);
 
+    boolean existsById(UUID id);
+
     Optional<User> findById(UUID id);
 
     User save(User user);
-
 
     Optional<User> findByIdentifier(String identifier);
 
