@@ -5,8 +5,8 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.OrderItem;
-import com.firozkhan.ecommerce.model.repository.OrderItemRepository;
+import com.firozkhan.ecommerce.modules.order.domain.entity.OrderItem;
+import com.firozkhan.ecommerce.modules.order.domain.repository.OrderItemRepository;
 
 @Repository
 public class OrderItemRepositoryImp implements OrderItemRepository {

@@ -6,9 +6,9 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.Shipment;
-import com.firozkhan.ecommerce.model.enums.ShipmentStatus;
-import com.firozkhan.ecommerce.model.repository.ShipmentRepository;
+import com.firozkhan.ecommerce.modules.shipment.domain.entity.Shipment;
+import com.firozkhan.ecommerce.modules.shipment.domain.enums.ShipmentStatus;
+import com.firozkhan.ecommerce.modules.shipment.domain.repository.ShipmentRepository;
 
 @Repository
 public class ShipmentRepositoryImp implements ShipmentRepository {

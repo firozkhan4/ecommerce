@@ -5,9 +5,11 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.firozkhan.ecommerce.application.exception.ResourceNotFoundException;
 import com.firozkhan.ecommerce.application.service.seller.SellerService;
-import com.firozkhan.ecommerce.model.repository.SellerRepository;
 import com.firozkhan.ecommerce.model.repository.UserRepository;
+import com.firozkhan.ecommerce.modules.seller.domain.entity.Seller;
+import com.firozkhan.ecommerce.modules.seller.domain.repository.SellerRepository;
 import com.firozkhan.ecommerce.web.dto.request.CreateSellerRequest;
 import com.firozkhan.ecommerce.web.dto.request.UpdateSellerRequest;
 import com.firozkhan.ecommerce.web.dto.response.SellerResponse;
@@ -27,13 +29,19 @@ public class SellerServiceImp implements SellerService {
     @Override
     public SellerResponse createSeller(CreateSellerRequest request) {
         
-        var exists = userRepository.existsById(request.getUserId());
+        if(!userRepository.existsById(request.getUserId()))
+            throw new ResourceNotFoundException("User not found");
+        
+        var seller = new Seller(request.getUserId(), request.getShopName(), request.getGst());
+
+        var newSeller = sellerRepository.save(seller);
+
+        return SellerResponse.toDto(newSeller);
     }
 
     @Override
     public SellerResponse updateSeller(UUID sellerId, UpdateSellerRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateSeller'");
+       return null;
     }
 
     @Override

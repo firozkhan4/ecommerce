@@ -8,7 +8,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.Order;
+import com.firozkhan.ecommerce.modules.order.domain.entity.Order;
 
 @Repository
 public interface JpaOrderRepository extends JpaRepository<Order, UUID> {

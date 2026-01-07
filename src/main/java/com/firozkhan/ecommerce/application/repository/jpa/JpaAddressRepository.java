@@ -7,7 +7,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.Address;
+import com.firozkhan.ecommerce.modules.user.domain.entity.Address;
 
 @Repository
 public interface JpaAddressRepository extends JpaRepository<Address, UUID> {

@@ -1,14 +1,13 @@
 package com.firozkhan.ecommerce.application.repository.jpa;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.Seller;
-import com.firozkhan.ecommerce.model.enums.SellerStatus;
+import com.firozkhan.ecommerce.modules.seller.domain.entity.Seller;
+
 
 @Repository
 public interface JpaSellerRepository extends JpaRepository<Seller, UUID> {
@@ -25,8 +24,6 @@ public interface JpaSellerRepository extends JpaRepository<Seller, UUID> {
 
     /**
      * Get sellers by status (admin moderation)
-     */
-    List<Seller> findAllByStatus(SellerStatus status);
 
     /**
      * Find seller by GST number
@@ -37,4 +34,5 @@ public interface JpaSellerRepository extends JpaRepository<Seller, UUID> {
      * Check GST uniqueness
      */
     boolean existsByGst(String gst);
+
 }

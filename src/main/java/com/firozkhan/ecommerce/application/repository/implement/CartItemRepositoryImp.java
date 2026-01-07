@@ -7,8 +7,8 @@ import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 import com.firozkhan.ecommerce.application.repository.jpa.JpaCartItemRepository;
-import com.firozkhan.ecommerce.model.entity.CartItem;
-import com.firozkhan.ecommerce.model.repository.CartItemRepository;
+import com.firozkhan.ecommerce.modules.cart.domain.entity.CartItem;
+import com.firozkhan.ecommerce.modules.cart.domain.repository.CartItemRepository;
 
 @Repository
 public class CartItemRepositoryImp implements CartItemRepository {
@@ -21,8 +21,7 @@ public class CartItemRepositoryImp implements CartItemRepository {
 
     @Override
     public List<CartItem> findAllByCartId(UUID cartId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAllByCartId'");
+       return jpaCartItemRepository.findAllByCartId(cartId);
     }
 
     @Override

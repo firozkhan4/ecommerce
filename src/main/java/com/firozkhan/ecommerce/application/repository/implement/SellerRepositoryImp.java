@@ -6,12 +6,19 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.Seller;
-import com.firozkhan.ecommerce.model.enums.SellerStatus;
-import com.firozkhan.ecommerce.model.repository.SellerRepository;
+import com.firozkhan.ecommerce.application.repository.jpa.JpaSellerRepository;
+import com.firozkhan.ecommerce.modules.seller.domain.entity.Seller;
+import com.firozkhan.ecommerce.modules.seller.domain.enums.SellerStatus;
+import com.firozkhan.ecommerce.modules.seller.domain.repository.SellerRepository;
 
 @Repository
 public class SellerRepositoryImp implements SellerRepository {
+
+    private final JpaSellerRepository jpaSellerRepository;
+
+    public SellerRepositoryImp(JpaSellerRepository jpaSellerRepository) {
+        this.jpaSellerRepository = jpaSellerRepository;
+    }
 
     @Override
     public Optional<Seller> findByUserId(UUID userId) {
@@ -43,5 +50,9 @@ public class SellerRepositoryImp implements SellerRepository {
         throw new UnsupportedOperationException("Unimplemented method 'existsByGst'");
     }
 
-    
+    @Override
+    public Seller save(Seller seller) {
+        return jpaSellerRepository.save(seller);
+    }
+
 }

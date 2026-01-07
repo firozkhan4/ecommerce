@@ -7,9 +7,9 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.Product;
-import com.firozkhan.ecommerce.model.enums.ProductStatus;
-import com.firozkhan.ecommerce.model.repository.ProductRepository;
+import com.firozkhan.ecommerce.modules.product.domain.entity.Product;
+import com.firozkhan.ecommerce.modules.product.domain.enums.ProductStatus;
+import com.firozkhan.ecommerce.modules.product.domain.repository.ProductRepository;
 
 @Repository
 public class ProductRepositoryImp implements ProductRepository {

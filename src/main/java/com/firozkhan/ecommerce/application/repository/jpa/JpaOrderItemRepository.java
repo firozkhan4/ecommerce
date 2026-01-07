@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.OrderItem;
+import com.firozkhan.ecommerce.modules.order.domain.entity.OrderItem;
 
 @Repository
 public interface JpaOrderItemRepository extends JpaRepository<OrderItem, UUID> {

@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.User;
+import com.firozkhan.ecommerce.modules.user.domain.entity.User;
+
 
 @Repository
 public interface JpaUserRepository extends JpaRepository<User, UUID> {

@@ -7,8 +7,8 @@ import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 import com.firozkhan.ecommerce.application.repository.jpa.JpaAddressRepository;
-import com.firozkhan.ecommerce.model.entity.Address;
-import com.firozkhan.ecommerce.model.repository.AddressRepository;
+import com.firozkhan.ecommerce.modules.user.domain.entity.Address;
+import com.firozkhan.ecommerce.modules.user.domain.repository.AddressRepository;
 
 @Repository
 public class AddressRepositoryImp implements AddressRepository {

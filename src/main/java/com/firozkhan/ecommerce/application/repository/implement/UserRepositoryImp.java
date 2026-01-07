@@ -6,8 +6,8 @@ import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 import com.firozkhan.ecommerce.application.repository.jpa.JpaUserRepository;
-import com.firozkhan.ecommerce.model.entity.User;
 import com.firozkhan.ecommerce.model.repository.UserRepository;
+import com.firozkhan.ecommerce.modules.user.domain.entity.User;
 
 @Repository
 public class UserRepositoryImp implements UserRepository {
@@ -45,7 +45,7 @@ public class UserRepositoryImp implements UserRepository {
 
     @Override
     public User save(User user) {
-       return jpaUserRepository.save(user);
+        return jpaUserRepository.save(user);
     }
 
     @Override
@@ -58,5 +58,4 @@ public class UserRepositoryImp implements UserRepository {
         return jpaUserRepository.existsById(id);
     }
 
-    
 }

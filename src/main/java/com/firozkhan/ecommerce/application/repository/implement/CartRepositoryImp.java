@@ -5,8 +5,8 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.Cart;
-import com.firozkhan.ecommerce.model.repository.CartRepository;
+import com.firozkhan.ecommerce.modules.cart.domain.entity.Cart;
+import com.firozkhan.ecommerce.modules.cart.domain.repository.CartRepository;
 
 @Repository
 public class CartRepositoryImp implements CartRepository {

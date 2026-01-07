@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.Cart;
+import com.firozkhan.ecommerce.modules.cart.domain.entity.Cart;
 
 @Repository
 public interface JpaCartRepository extends JpaRepository<Cart, UUID> {

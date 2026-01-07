@@ -8,8 +8,8 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.Product;
-import com.firozkhan.ecommerce.model.enums.ProductStatus;
+import com.firozkhan.ecommerce.modules.product.domain.entity.Product;
+import com.firozkhan.ecommerce.modules.product.domain.enums.ProductStatus;
 
 @Repository
 public interface JpaProductRepository extends JpaRepository<Product, UUID> {

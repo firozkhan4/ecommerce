@@ -19,9 +19,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.firozkhan.ecommerce.application.exception.BadCredentialsException;
-import com.firozkhan.ecommerce.application.service.auth.implement.AuthServiceImp;
-import com.firozkhan.ecommerce.model.entity.User;
 import com.firozkhan.ecommerce.model.repository.UserRepository;
+import com.firozkhan.ecommerce.modules.auth.application.service.implement.AuthServiceImp;
+import com.firozkhan.ecommerce.modules.user.domain.entity.User;
 import com.firozkhan.ecommerce.web.dto.request.LoginRequest;
 import com.firozkhan.ecommerce.web.dto.request.RegisterRequest;
 import com.firozkhan.ecommerce.web.dto.response.AuthResponse;

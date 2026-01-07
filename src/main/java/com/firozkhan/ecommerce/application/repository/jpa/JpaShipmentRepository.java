@@ -7,8 +7,8 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.firozkhan.ecommerce.model.entity.Shipment;
-import com.firozkhan.ecommerce.model.enums.ShipmentStatus;
+import com.firozkhan.ecommerce.modules.shipment.domain.entity.Shipment;
+import com.firozkhan.ecommerce.modules.shipment.domain.enums.ShipmentStatus;
 
 @Repository
 public interface JpaShipmentRepository extends JpaRepository<Shipment, UUID> {
