@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.firozkhan.ecommerce.application.exception.ResourceNotFoundException;
 import com.firozkhan.ecommerce.application.service.seller.SellerService;
-import com.firozkhan.ecommerce.model.repository.UserRepository;
 import com.firozkhan.ecommerce.modules.seller.domain.entity.Seller;
 import com.firozkhan.ecommerce.modules.seller.domain.repository.SellerRepository;
+import com.firozkhan.ecommerce.modules.user.domain.repository.UserRepository;
 import com.firozkhan.ecommerce.web.dto.request.CreateSellerRequest;
 import com.firozkhan.ecommerce.web.dto.request.UpdateSellerRequest;
 import com.firozkhan.ecommerce.web.dto.response.SellerResponse;

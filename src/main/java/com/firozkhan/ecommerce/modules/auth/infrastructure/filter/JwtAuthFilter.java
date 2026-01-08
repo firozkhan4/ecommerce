@@ -36,7 +36,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
 
         final String authHeader = request.getHeader("Authorization");
 
@@ -68,7 +67,15 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
             filterChain.doFilter(request, response);
         } catch (Exception ex) {
-            handlerExceptionResolver.resolveException(request, response, null, ex);
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setContentType("application/json");
+
+            response.getWriter().write("""
+                        {
+                          "error": "INVALID_TOKEN",
+                          "message": "JWT token is invalid or expired"
+                        }
+                    """);
         }
     }
 }

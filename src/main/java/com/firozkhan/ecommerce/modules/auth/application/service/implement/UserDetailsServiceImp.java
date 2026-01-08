@@ -19,9 +19,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        var user = userQueryPort.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User Not Found!"));
-
+        var user = userQueryPort.findByUsername(username);
         return new UserDetailsAdapter(user);
     }
 
